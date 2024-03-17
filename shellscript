@@ -1,0 +1,300 @@
+	Shell scripting
+
+#! ---> shebang
+
+#!/bin/bash --> shebang line
+
+
+
+
+echo "Hello"
+echo "Welcome to shellscript class."
+echo "Today's date is:"
+date
+
+How to execute shell script
+---------------------------
+
+./hello.sh
+
+. hello.sh
+
+sh hello.sh
+
+bash hello.sh
+
+csh hello.sh
+
+
+Based on umask value, permissions are set for the files and directories.
+
+
+string:
+-------
+
+Set of characters or group of characters enclosed in double quotes.
+
+string_var="Hey this is shell class"
+
+echo $string_var ----> it will give the string
+
+echo ${string_var} -----> we can flower brackets also
+
+echo ${#string_var}  -----> # will give the  length of the string
+
+echo ${string_var:4:19}
+
+echo ${string_var:0:4}
+
+arithmetic operations:
+-----------------------
+
+expr 2 + 3
+expr 2 \* 3
+expr 3 / 2
+expr 2 % 3
+expr 2 - 3
+
+
+Read command:
+------------
+
+echo "Please enter your name"
+read personName
+echo "The person teaching shell is" $personName
+
+Array:
+------
+
+In read command if you -a it will consider as Array
+Eg: read -a personName
+
+REPLY:
+------
+
+If you don't call the variable then this $REPLY will give the output as what you have entered
+
+Eg:
+   echo "enter your favourite topic" ---> Jenkins
+   read
+   echo "favourite topic is: "$REPLY
+
+   o/p: Jenkins
+
+Eg2:
+
+read -p "Enter username" shyam
+read -p "Enter password" password
+
+echo " "
+echo "The username is" $username
+echo "The password is " $password
+ 
+
+> :: redirect std o/p
+
+>> :: append the std o/p
+
+>> : std i/p
+
+File Descripters
+-----------------
+
+0 -----> std i/p
+
+1 ------> std o/p
+
+2 ------> std error
+
+sh hello > hello.log 2>&1 ---> Redirect both error and o/p into hello.log
+
+sh hello 2> error.log 1> output.log
+
+if-else
+-------
+
+if (condition)
+{
+ ------
+ ------
+}  
+
+else (condition)
+{
+ -----
+ -----
+}
+
+In shell Script
+---------------
+
+if [condition]
+then
+ -----
+ ----- 
+else
+ -----
+ -----
+
+fi
+
+Eg:1 
+
+echo "if else condition demo starts"
+
+a=10 
+b=20
+
+if [ $a -gt $b ]
+then 
+echo "$a is greater than $b"
+else
+echo "$a is smaller than $b"
+fi
+
+
+echo "Please enter the file name"
+read fileName
+
+if [ -f /opt/$fileName ]
+then
+echo "The $fileName is existed in current directory."
+else "The $fileName is not there in current directory."
+fi 
+
+
+switch Case
+-----------
+
+The switch case statement is good alternative to multilevel if-then-else-statement.
+It enables you to match several values against one variable.
+
+
+syntax:
+
+sh sonar.sh start|stop|restart|status
+
+
+case $1 in 
+
+start) 
+echo "starting the sonarqube server"
+echo "started the sonarqube server"
+;;
+
+stop)
+echo "stoping the sonarqube server"
+echo "stopped the sonarqube server"
+;;
+
+restart)
+echo "Re-starting the sonarqube server"
+echo "Re-started teh sonarqube server"
+;;
+
+*)
+echo "please pass the correct argument"
+echo "sh $0 start|stop|restart"
+;;
+
+esac
+
+Eg2:
+
+echo "please enter the numbers from 1 to 5 only"
+
+read number
+
+case $number in 
+
+1)
+echo "you've typed one"
+echo "you've typed the correct number"
+;;
+
+2)
+echo "you've typed two"
+echo "you've typed the correct number"
+;;
+
+3)
+echo "you've typed three"
+echo "you've typed the correct number"
+;;
+
+4)
+echo "you've typed four"
+echo "you've typed the correct number"
+;;
+
+5)
+echo "you've typed five"
+echo "you've typed the ocrrect number"
+;;
+
+*)
+echo "Invalid Number"
+echo "please enter the numbers from 1 to 5 only"
+;;
+
+esac
+
+
+
+Functions:
+----------
+
+echo "Fucnctions demo..."
+
+greetFn()
+{
+echo "Hello everyone."
+echo "today's date is:"
+date
+}
+
+echo "Functions are very useful to resue the code"
+echo "calling the function"
+
+greetFn
+
+Eg2:
+
+
+utilities.sh
+
+
+add()
+{
+echo "This function adds the numbers"
+echo "I'm in add function"
+}
+
+sub()
+{
+echo "This function subtracts the numbers"
+echo "I'm from sub function"
+}
+
+add
+sub
+
+>> to import scripts from one file to another we use source key word 
+
+source ./utilites.sh
+
+Note: If cr raises in any then it is very difficult to change everything.  CR- change request
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
